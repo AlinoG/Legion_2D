@@ -47,7 +47,7 @@ public class PlayerSecondaryAttackState : PlayerAbilityState
         xInput = player.InputHandler.NormInputX;
         hasChangedDirection = player.CheckIfHasChangedDirection(xInput);
 
-        if (secondaryAttackInput && canAttack && playerData.arrowCount > 0)
+        if (secondaryAttackInput && canAttack && player.arrowCount > 0)
         {
             canAttack = false;
             Shoot();
