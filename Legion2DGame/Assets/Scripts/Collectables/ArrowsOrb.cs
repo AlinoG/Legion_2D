@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthOrb : Orb
+public class ArrowsOrb : Orb
 {
     [Header("Orb Specific Stats")]
-    public float healValue;
+    public int min;
+    public int max;
 
     public override void HandleCollision(Collision2D collision)
     {
         base.HandleCollision(collision);
 
-        collision.transform.SendMessage("Heal", healValue);
+        int randomDrop = Random.Range(min, max);
+        collision.transform.SendMessage("AddArrows", randomDrop);
     }
 
 }

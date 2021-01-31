@@ -35,9 +35,6 @@ public class Enemy1 : Entity
     [SerializeField]
     private Transform meleeAttackPosition;
 
-    [Header("Drop Items")]
-    public GameObject[] dropItems;
-
     public override void Start()
     {
         base.Start();
@@ -68,18 +65,11 @@ public class Enemy1 : Entity
         if (isDead)
         {
             stateMachine.ChangeState(deadState);
-            DropItem();
         }
 
         else if (isStunned && stateMachine.currentState != stunState)
         {
             stateMachine.ChangeState(stunState);
         }
-    }
-
-    private void DropItem()
-    {
-        int randomDrop = Random.Range(0, dropItems.Length);
-        Instantiate(dropItems[randomDrop], transform.position, Quaternion.identity);
     }
 }

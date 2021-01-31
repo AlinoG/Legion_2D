@@ -10,6 +10,9 @@ public class Entity : MonoBehaviour
     public D_Entity entityData;
     public EnemyHealthBar healthBar;
 
+    [Header("Drop Items")]
+    public GameObject[] dropItems;
+
     public int facingDirection { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
@@ -146,6 +149,7 @@ public class Entity : MonoBehaviour
         if (currentHealth <= 0)
         {
             isDead = true;
+            DropItem();
             GM.EnemyKilled();
             return;
         }
@@ -192,6 +196,12 @@ public class Entity : MonoBehaviour
             healthBar.currentHealth = currentHealth;
             healthBar.maxHealth = entityData.maxHealth;
         }
+    }
+
+    public virtual void DropItem()
+    {
+        int randomDrop = Random.Range(0, dropItems.Length);
+        Instantiate(dropItems[randomDrop], transform.position, Quaternion.identity);
     }
 
     public virtual void OnDrawGizmos()
