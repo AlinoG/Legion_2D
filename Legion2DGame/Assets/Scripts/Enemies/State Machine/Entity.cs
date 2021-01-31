@@ -130,6 +130,7 @@ public class Entity : MonoBehaviour
 
         float damage = attackDetails.damageAmount;
         float stunDamage = attackDetails.stunDamageAmount;
+
         if (IsSneekAttack())
         {
             damage *= attackDetails.sneekAttackMultiplier;

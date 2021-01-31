@@ -62,7 +62,6 @@ public class Arrow : MonoBehaviour
 
             if (damageHit)
             {
-                Debug.Log("hit " + attackDetails.damageAmount);
                 damageHit.transform.SendMessage("Damage", attackDetails);
                 Destroy(gameObject);
             }
@@ -87,11 +86,11 @@ public class Arrow : MonoBehaviour
         }
     }
 
-    public void FireProjectile(float speed, float travelDistance, float damage)
+    public void FireProjectile(float speed, float travelDistance, AttackDetails arrowAttackdetails)
     {
         this.speed = speed;
         this.travelDistance = travelDistance;
-        attackDetails.damageAmount = damage;
+        attackDetails = arrowAttackdetails;
     }
 
     private void OnDrawGizmos()

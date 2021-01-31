@@ -68,11 +68,14 @@ public class PlayerSecondaryAttackState : PlayerAbilityState
         attackDetails.arrow = playerData.arrow;
         attackDetails.arrowSpeed = playerData.arrowSpeed;
         attackDetails.arrowTravelDistance = playerData.arrowTravelDistance;
-        attackDetails.arrowDamage = playerData.arrowDamage;
+        attackDetails.damageAmount = playerData.arrowDamage;
+        attackDetails.stunDamageAmount = playerData.stunDamageAmount;
+        attackDetails.behindBackAttackMultiplier = playerData.behindBackAttackMultiplier;
+        attackDetails.sneekAttackMultiplier = playerData.sneekAttackMultiplier;
 
         arrow = GameObject.Instantiate(attackDetails.arrow, player.firePoint.position, player.firePoint.rotation);
         arrowScript = arrow.GetComponent<Arrow>();
-        arrowScript.FireProjectile(attackDetails.arrowSpeed, attackDetails.arrowTravelDistance, attackDetails.arrowDamage);
+        arrowScript.FireProjectile(attackDetails.arrowSpeed, attackDetails.arrowTravelDistance, attackDetails);
     }
 
     public override void PhysicsUpdate()

@@ -46,7 +46,7 @@ public class PlayerAttackState : PlayerAbilityState
         xInput = player.InputHandler.NormInputX;
         hasChangedDirection = player.CheckIfHasChangedDirection(xInput);
 
-        if (canAttack && isAnimationFinished && primaryAttackInput)
+        if (canAttack && primaryAttackInput)
         {
             canAttack = false;
             TriggerAttack();
@@ -64,8 +64,8 @@ public class PlayerAttackState : PlayerAbilityState
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attackPosition.position, playerData.attackRadius, playerData.whatIsEnemy);
         attackDetails.damageAmount = playerData.damageAmount;
-        attackDetails.stunDamageAmount = playerData.stunDamageAmount;
         attackDetails.position = attackPosition.position;
+        attackDetails.stunDamageAmount = playerData.stunDamageAmount;
         attackDetails.behindBackAttackMultiplier = playerData.behindBackAttackMultiplier;
         attackDetails.sneekAttackMultiplier = playerData.sneekAttackMultiplier;
 
