@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Slider HealthBarHUD;
     public Text LivesCountHUD;
     public Text KillCountHUD;
+    public Text PlayerArrowCountHUD;
 
     [Header("Random Level Generator")]
     public LevelGenerator LevelGenerator;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         CheckPlayerHealthBar();
         CheckPlayerLives();
         CheckPlayerKills();
+        CheckPlayerArrowCount();
     }
 
     public void Respawn()
@@ -124,5 +126,10 @@ public class GameManager : MonoBehaviour
     private void CheckPlayerKills()
     {
         KillCountHUD.text = "Kills: " + enemyKillCount;
+    }
+
+    private void CheckPlayerArrowCount()
+    {
+        PlayerArrowCountHUD.text = "Arrows: " + player.GetComponent<Player>().arrowCount;
     }
 }

@@ -63,11 +63,14 @@ public class PlayerAttackState : PlayerAbilityState
     public virtual void TriggerAttack()
     {
         Collider2D[] detectedObjects = Physics2D.OverlapCircleAll(attackPosition.position, playerData.attackRadius, playerData.whatIsEnemy);
-        attackDetails.damageAmount = playerData.damageAmount;
         attackDetails.position = attackPosition.position;
-        attackDetails.stunDamageAmount = playerData.stunDamageAmount;
         attackDetails.behindBackAttackMultiplier = playerData.behindBackAttackMultiplier;
         attackDetails.sneekAttackMultiplier = playerData.sneekAttackMultiplier;
+
+        // ToDo: Should come from weapon
+        attackDetails.damageAmount = 10; 
+        attackDetails.stunDamageAmount = 1;
+        // ------------------------------
 
         foreach (Collider2D collider in detectedObjects)
         {

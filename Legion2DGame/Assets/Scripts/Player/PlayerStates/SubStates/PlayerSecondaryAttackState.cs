@@ -7,7 +7,6 @@ public class PlayerSecondaryAttackState : PlayerAbilityState
 {
     protected Transform attackPosition;
     private AttackDetails attackDetails;
-    private bool secondaryAttackInput;
     private bool canAttack = true;
     private int xInput;
     private bool hasChangedDirection;
@@ -48,11 +47,11 @@ public class PlayerSecondaryAttackState : PlayerAbilityState
         xInput = player.InputHandler.NormInputX;
         hasChangedDirection = player.CheckIfHasChangedDirection(xInput);
 
-
-        if (secondaryAttackInput && canAttack)
+        if (secondaryAttackInput && canAttack && playerData.arrowCount > 0)
         {
             canAttack = false;
             Shoot();
+            player.RemoveArrows(1);
         }
 
         if (!secondaryAttackInput || hasChangedDirection)
@@ -65,13 +64,16 @@ public class PlayerSecondaryAttackState : PlayerAbilityState
 
     private void Shoot()
     {
+        attackDetails.behindBackAttackMultiplier = playerData.behindBackAttackMultiplier;
+        attackDetails.sneekAttackMultiplier = playerData.sneekAttackMultiplier;
         attackDetails.arrow = playerData.arrow;
         attackDetails.arrowSpeed = playerData.arrowSpeed;
         attackDetails.arrowTravelDistance = playerData.arrowTravelDistance;
-        attackDetails.damageAmount = playerData.arrowDamage;
-        attackDetails.stunDamageAmount = playerData.stunDamageAmount;
-        attackDetails.behindBackAttackMultiplier = playerData.behindBackAttackMultiplier;
-        attackDetails.sneekAttackMultiplier = playerData.sneekAttackMultiplier;
+
+        // ToDo: Should come from weapon
+        attackDetails.damageAmount = 5;
+        attackDetails.stunDamageAmount = 2;
+        // ----------------------------
 
         arrow = GameObject.Instantiate(attackDetails.arrow, player.firePoint.position, player.firePoint.rotation);
         arrowScript = arrow.GetComponent<Arrow>();

@@ -38,17 +38,16 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  attackRadius: 0.75
-  damageAmount: 10
-  stunDamageAmount: 1
-  behindBackAttackMultiplier: 2
-  sneekAttackMultiplier: 3
-  arrow: {fileID: 4999251682977889904, guid: 0f665f0330abbf24f852380fa74318e1, type: 3}
-  attackRange: 0.5
-  damageAmountSecondaryAttack: 5
-  arrowDamage: 5
-  arrowSpeed: 10
-  arrowTravelDistance: 10
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
+  damageAmount: 2
+  stunDamageAmount: 1
+  behindBackAttackMultiplier: 2
+  sneekAttackMultiplier: 3
+  attackRadius: 0.75
+  arrow: {fileID: 4999251682977889904, guid: 0f665f0330abbf24f852380fa74318e1, type: 3}
+  arrowCount: 30
+  attackRange: 0.5
+  arrowSpeed: 10
+  arrowTravelDistance: 10
