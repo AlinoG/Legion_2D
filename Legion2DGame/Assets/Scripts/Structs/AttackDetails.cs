@@ -4,6 +4,7 @@ using UnityEngine;
 
 public struct AttackDetails
 {
+    // General
     public Vector2 position;
     public float damageAmount;
     public float stunDamageAmount;
@@ -11,8 +12,8 @@ public struct AttackDetails
     public float sneekAttackMultiplier;
     public bool pushBack;
     public float pushBackForce;
+    // Arrow
     public GameObject arrow;
     public float arrowSpeed;
     public float arrowTravelDistance;
-    public float arrowDamage;
 }

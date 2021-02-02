@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class Player : MonoBehaviour
     public bool alive;
     public float maxHealth { get; private set; }
     public float currentHealth { get; private set; }
+    public int arrowCount { get; private set; }
 
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         alive = true;
         maxHealth = playerData.totalHealth;
         currentHealth = maxHealth;
+        arrowCount = playerData.arrowCount;
 
         StateMachine.Initialize(IdleState);
     }
@@ -273,6 +274,19 @@ public class Player : MonoBehaviour
         {
             currentHealth = 0;
             Death();
+        }
+    }
+
+    public void AddArrows(int ammount)
+    {
+        arrowCount += ammount;
+    }
+
+    public void RemoveArrows(int ammount)
+    {
+        if (arrowCount > 0)
+        {
+            arrowCount -= ammount;
         }
     }
 

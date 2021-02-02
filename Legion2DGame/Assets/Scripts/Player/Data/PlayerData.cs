@@ -47,20 +47,20 @@ public class PlayerData : ScriptableObject
     public float wallCheckDistance = 0.5f;
     public LayerMask whatIsGround;
 
-    [Header("Melee Attack Variables")]
-    public float attackRadius = 0.5f;
-    public float damageAmount = 10;
+    [Header("Attack General Variabled")]
+    public LayerMask whatIsEnemy;
+    public float damageAmount = 2;
     public float stunDamageAmount = 1;
     public float behindBackAttackMultiplier = 2f;
     public float sneekAttackMultiplier = 3f;
 
+    [Header("Melee Attack Variables")]
+    public float attackRadius = 0.5f;
+
     [Header("Secondary Attack Variables")]
     public GameObject arrow;
+    public int arrowCount = 30;
     public float attackRange = 0.5f;
-    public float damageAmountSecondaryAttack = 5;
-    public float arrowDamage = 10;
     public float arrowSpeed = 30;
     public float arrowTravelDistance = 10;
-
-    public LayerMask whatIsEnemy;
 }

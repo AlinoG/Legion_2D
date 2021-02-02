@@ -139,6 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityData: {fileID: 11400000, guid: c4b96808ceb2fee429a857c7ee9c504c, type: 2}
   healthBar: {fileID: 9004957009704863474}
+  dropItems:
+  - {fileID: 3101932809623234745, guid: b5307060313240c43a022eada79fa69c, type: 3}
   wallCheck: {fileID: 1743512392391302547}
   ledgeCheck: {fileID: 1743512394165268969}
   playerCheck: {fileID: 1743512393928509463}

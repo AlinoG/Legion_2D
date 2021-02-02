@@ -289,6 +289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityData: {fileID: 11400000, guid: d831123858746b3438d74b9fa14e2104, type: 2}
   healthBar: {fileID: 3967558882350405631}
+  dropItems:
+  - {fileID: 2581645491030239815, guid: 2110f5050605a80408d1cff6b8a9a920, type: 3}
   wallCheck: {fileID: 1683116455539242344}
   ledgeCheck: {fileID: 1683116454895710365}
   playerCheck: {fileID: 1683116456096885192}
@@ -304,8 +306,6 @@ MonoBehaviour:
   stunStateData: {fileID: 11400000, guid: feb476734f45df242b04c3b50b211dc5, type: 2}
   deadStateData: {fileID: 11400000, guid: 803c5f6895b75114087f77743674c1bc, type: 2}
   meleeAttackPosition: {fileID: 1683116455409176599}
-  dropItems:
-  - {fileID: 2581645491030239815, guid: 2110f5050605a80408d1cff6b8a9a920, type: 3}
 --- !u!50 &1683116456688184136
 Rigidbody2D:
   serializedVersion: 4
