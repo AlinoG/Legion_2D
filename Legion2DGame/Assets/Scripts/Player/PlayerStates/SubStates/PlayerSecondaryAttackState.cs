@@ -71,12 +71,13 @@ public class PlayerSecondaryAttackState : PlayerAbilityState
         attackDetails.arrowTravelDistance = playerData.arrowTravelDistance;
 
         // ToDo: Should come from weapon
-        attackDetails.damageAmount = 5;
-        attackDetails.stunDamageAmount = 2;
+        attackDetails.damageAmount = playerData.damageAmount / 2;
+        attackDetails.stunDamageAmount = playerData.stunDamageAmount * 2;
         // ----------------------------
 
         arrow = GameObject.Instantiate(attackDetails.arrow, player.firePoint.position, player.firePoint.rotation);
         arrowScript = arrow.GetComponent<Arrow>();
+        attackDetails.position = arrow.transform.position;
         arrowScript.FireProjectile(attackDetails.arrowSpeed, attackDetails.arrowTravelDistance, attackDetails);
     }
 
