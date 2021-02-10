@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHealth: 100
   movementVelocity: 10
-  jumpVelocity: 18
+  jumpVelocity: 20
   amountOfJumps: 2
-  wallJumpVelocity: 20
+  wallJumpVelocity: 19
   wallJumpTime: 0.4
   wallJumpAngle: {x: 1, y: 2}
   coyoteTime: 0.2
@@ -25,7 +25,7 @@ MonoBehaviour:
   wallClimbVelocity: 3
   startOffset: {x: 0.4, y: 0.9}
   stopOffset: {x: 0.4, y: 0.75}
-  dashCooldown: 1
+  dashCooldown: 5
   maxHoldTime: 1
   holdTimeScale: 0.15
   dashTime: 0.2
@@ -41,7 +41,7 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8192
-  damageAmount: 2
+  damageAmount: 10
   stunDamageAmount: 1
   behindBackAttackMultiplier: 2
   sneekAttackMultiplier: 3

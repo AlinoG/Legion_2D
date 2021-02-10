@@ -68,8 +68,8 @@ public class PlayerAttackState : PlayerAbilityState
         attackDetails.sneekAttackMultiplier = playerData.sneekAttackMultiplier;
 
         // ToDo: Should come from weapon
-        attackDetails.damageAmount = 10; 
-        attackDetails.stunDamageAmount = 1;
+        attackDetails.damageAmount = playerData.damageAmount; 
+        attackDetails.stunDamageAmount = playerData.stunDamageAmount;
         // ------------------------------
 
         foreach (Collider2D collider in detectedObjects)
