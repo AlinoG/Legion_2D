@@ -7,10 +7,11 @@ public class Player : MonoBehaviour
     #region State Variables
 
     public PlayerStateMachine StateMachine { get; private set; }
-    public bool alive;
+    public bool alive { get; private set; }
     public float maxHealth { get; private set; }
     public float currentHealth { get; private set; }
     public int arrowCount { get; private set; }
+    public float dashCooldown { get; private set; }
 
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
@@ -106,6 +107,7 @@ public class Player : MonoBehaviour
         maxHealth = playerData.totalHealth;
         currentHealth = maxHealth;
         arrowCount = playerData.arrowCount;
+        dashCooldown = playerData.dashCooldown;
 
         StateMachine.Initialize(IdleState);
     }
@@ -288,6 +290,12 @@ public class Player : MonoBehaviour
         {
             arrowCount -= ammount;
         }
+    }
+
+    public void Resurrect()
+    {
+        alive = true;
+        gameObject.SetActive(true);
     }
 
     public void Death()

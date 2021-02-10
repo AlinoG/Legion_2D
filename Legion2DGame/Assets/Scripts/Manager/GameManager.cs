@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public Text LivesCountHUD;
     public Text KillCountHUD;
     public Text PlayerArrowCountHUD;
+    public Text PlayerDashCounterHUD;
+    private float dashCooldownTime;
 
     [Header("Random Level Generator")]
     public LevelGenerator LevelGenerator;
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
         CheckPlayerLives();
         CheckPlayerKills();
         CheckPlayerArrowCount();
+        CheckPlayerDashTimer();
     }
 
     public void Respawn()
@@ -107,7 +110,7 @@ public class GameManager : MonoBehaviour
             CVC.m_Follow = player.transform;
             player.GetComponent<Player>().Heal(player.GetComponent<Player>().maxHealth);
             player.SetActive(true);
-            player.GetComponent<Player>().alive = true;
+            player.GetComponent<Player>().Resurrect();
             respawn = false;
             respawning = false;
         }
@@ -131,5 +134,24 @@ public class GameManager : MonoBehaviour
     private void CheckPlayerArrowCount()
     {
         PlayerArrowCountHUD.text = "Arrows: " + player.GetComponent<Player>().arrowCount;
+    }
+
+    private void CheckPlayerDashTimer()
+    {
+        // ToDo: Make this check better and reusable
+        if (player.GetComponent<Player>().StateMachine.CurrentState.ToString() == "PlayerDashState")
+        {
+            dashCooldownTime = player.GetComponent<Player>().dashCooldown;
+        }
+
+        if (dashCooldownTime > 0)
+        {
+            dashCooldownTime -= Time.deltaTime;
+            PlayerDashCounterHUD.text = dashCooldownTime.ToString();
+        }
+        else
+        {
+            PlayerDashCounterHUD.text = null;
+        }
     }
 }
