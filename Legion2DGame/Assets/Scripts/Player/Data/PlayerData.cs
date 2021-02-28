@@ -3,9 +3,9 @@
 [CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
 public class PlayerData : ScriptableObject
 {
-    [Header("Health")]
+    [Header("Basic stats")]
     public float totalHealth = 100;
-
+    public int totalAbility = 100;
     [Header("Move State")]
     public float movementVelocity = 10f;
 
@@ -33,6 +33,7 @@ public class PlayerData : ScriptableObject
     public Vector2 stopOffset;
 
     [Header("Dash State")]
+    public float dashAbilityValue = 40;
     public float dashCooldown = 0.5f;
     public float maxHoldTime = 1f;
     public float holdTimeScale = 0.25f;

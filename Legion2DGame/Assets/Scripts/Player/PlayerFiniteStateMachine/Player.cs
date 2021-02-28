@@ -7,10 +7,13 @@ public class Player : MonoBehaviour
     #region State Variables
 
     public PlayerStateMachine StateMachine { get; private set; }
-    public bool alive;
+    public bool alive { get; private set; }
     public float maxHealth { get; private set; }
     public float currentHealth { get; private set; }
+    public float maxAbility { get; private set; }
+    public float currentAbility { get; private set; }
     public int arrowCount { get; private set; }
+    public float dashCooldown { get; private set; }
 
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
@@ -100,14 +103,18 @@ public class Player : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
         RB = GetComponent<Rigidbody2D>();
         DashDirectionIndicator = transform.Find("DashDirectionIndicator");
+        StateMachine.Initialize(IdleState);
 
-        facingDirection = 1;
         alive = true;
+
         maxHealth = playerData.totalHealth;
         currentHealth = maxHealth;
+        maxAbility = playerData.totalAbility;
+        currentAbility = maxAbility;
         arrowCount = playerData.arrowCount;
+        dashCooldown = playerData.dashCooldown;
 
-        StateMachine.Initialize(IdleState);
+        facingDirection = 1;
     }
 
     private void Update()
@@ -277,6 +284,26 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void FillAbility(float ammout)
+    {
+        currentAbility += ammout;
+
+        if (currentAbility > maxAbility)
+        {
+            currentAbility = maxAbility;
+        }
+    }
+
+    public void DepleteAbility(float ammount)
+    {
+        currentAbility -= ammount;
+
+        if (currentAbility < 0)
+        {
+            currentAbility = 0;
+        }
+    }
+
     public void AddArrows(int ammount)
     {
         arrowCount += ammount;
@@ -284,10 +311,18 @@ public class Player : MonoBehaviour
 
     public void RemoveArrows(int ammount)
     {
-        if (arrowCount > 0)
+        arrowCount -= ammount;
+
+        if (arrowCount < 0)
         {
-            arrowCount -= ammount;
+            arrowCount = 0;
         }
+    }
+
+    public void Resurrect()
+    {
+        alive = true;
+        gameObject.SetActive(true);
     }
 
     public void Death()
