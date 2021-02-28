@@ -117,7 +117,15 @@ public class Entity : MonoBehaviour
 
     public virtual void DamageHop(float velocity)
     {
-        velocityWorkspace.Set(rb.velocity.x, velocity);
+        velocityWorkspace.Set(rb.velocity.x / 2, velocity);
+        rb.velocity = velocityWorkspace;
+    }
+
+    public virtual void PushBack(Vector2 position, float velocity)
+    {
+        Vector2 direction = (rb.position - position).normalized;
+        Vector2 pushBackForce = direction * velocity;
+        velocityWorkspace.Set(pushBackForce.x, pushBackForce.y);
         rb.velocity = velocityWorkspace;
     }
 
@@ -160,9 +168,13 @@ public class Entity : MonoBehaviour
             isStunned = true;
         }
 
-        UpdateHealthBar();
-        DamageHop(entityData.damageHopSpeed);
         Instantiate(entityData.hitParticle, transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
+        UpdateHealthBar();
+        PushBack(attackDetails.position, entityData.damageHopSpeed);
+        if (CheckGround())
+        {
+            DamageHop(entityData.damageHopSpeed);
+        }
     }
 
     private bool IsAttackFromBehind(Vector2 attackPosition)
@@ -214,7 +226,8 @@ public class Entity : MonoBehaviour
         Gizmos.DrawWireSphere(playerCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.maxAgroDistance), 0.2f);
     }
 
-    public void EntedAlertedPhase() {
+    public void EntedAlertedPhase()
+    {
         isAlerted = true;
     }
 
