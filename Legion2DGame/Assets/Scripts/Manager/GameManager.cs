@@ -147,11 +147,11 @@ public class GameManager : MonoBehaviour
         if (dashCooldownTime > 0)
         {
             dashCooldownTime -= Time.deltaTime;
-            PlayerDashCounterHUD.text = dashCooldownTime.ToString();
+            PlayerDashCounterHUD.text =  dashCooldownTime.ToString();
         }
         else
         {
-            PlayerDashCounterHUD.text = null;
+            PlayerDashCounterHUD.text = "Current ability: " + player.GetComponent<Player>().currentAbility;
         }
     }
 }

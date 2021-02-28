@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   totalHealth: 100
+  totalAbility: 100
   movementVelocity: 10
   jumpVelocity: 18
   amountOfJumps: 2
@@ -25,7 +26,8 @@ MonoBehaviour:
   wallClimbVelocity: 3
   startOffset: {x: 0.4, y: 0.9}
   stopOffset: {x: 0.4, y: 0.75}
-  dashCooldown: 10
+  dashAbilityValue: 40
+  dashCooldown: 5
   maxHoldTime: 1
   holdTimeScale: 0.15
   dashTime: 0.2
