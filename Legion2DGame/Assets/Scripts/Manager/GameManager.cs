@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     public Text LivesCountHUD;
     public Text KillCountHUD;
     public Text PlayerArrowCountHUD;
+    public Text PlayerDashCounterHUD;
     public GameObject PlayerAbilityOrbHUD;
+    private float dashCooldownTime;
 
     [Header("Random Level Generator")]
     public LevelGenerator LevelGenerator;
@@ -137,6 +139,23 @@ public class GameManager : MonoBehaviour
 
     private void CheckPlayerDashTimer()
     {
+        // ToDo: Make this check better and reusable
+        if (player.GetComponent<Player>().StateMachine.CurrentState.ToString() == "PlayerDashState")
+        {
+            dashCooldownTime = player.GetComponent<Player>().dashCooldown;
+        }
+
+        // TODo: Maybe we don't need this dashCooldDown
+        if (dashCooldownTime > 0)
+        {
+            dashCooldownTime -= Time.deltaTime;
+            PlayerDashCounterHUD.text = dashCooldownTime.ToString();
+        }
+        else
+        {
+            PlayerDashCounterHUD.text = "Current ability: " + player.GetComponent<Player>().currentAbility;
+        }
+
         PlayerAbilityOrbHUD.GetComponent<HUDOrbScript>().currentValue = player.GetComponent<Player>().currentAbility;
     }
 }
