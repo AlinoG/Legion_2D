@@ -1,16 +1,16 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthOrb : Orb
+public class AbilityOrb : Orb
 {
     [Header("Orb Specific Stats")]
-    public float healValue;
+    public float value;
 
     public override void HandleCollision(Collision2D collision)
     {
         base.HandleCollision(collision);
 
-        collision.transform.SendMessage("Heal", healValue);
+        collision.transform.SendMessage("FillAbility", value);
     }
 }

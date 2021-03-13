@@ -9605,6 +9605,7 @@ MonoBehaviour:
   LivesCountHUD: {fileID: 1853510093}
   KillCountHUD: {fileID: 331706945}
   PlayerArrowCountHUD: {fileID: 1284134853}
+  PlayerDashCounterHUD: {fileID: 560671097}
   PlayerAbilityOrbHUD: {fileID: 2032012490}
   LevelGenerator: {fileID: 2040150343}
 --- !u!4 &979532588

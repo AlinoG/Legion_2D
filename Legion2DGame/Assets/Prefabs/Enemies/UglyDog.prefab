@@ -291,6 +291,7 @@ MonoBehaviour:
   healthBar: {fileID: 3967558882350405631}
   dropItems:
   - {fileID: 2581645491030239815, guid: 2110f5050605a80408d1cff6b8a9a920, type: 3}
+  - {fileID: 9007080996372210730, guid: d265f790096e2ce4da8a6a97a3d6a10f, type: 3}
   wallCheck: {fileID: 1683116455539242344}
   ledgeCheck: {fileID: 1683116454895710365}
   playerCheck: {fileID: 1683116456096885192}
@@ -388,6 +389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.951
       objectReference: {fileID: 0}
@@ -403,6 +409,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -414,16 +425,6 @@ PrefabInstance:
     - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4703249770973612386, guid: 8c8d354df6d379f4eb07887cf4706f74,
