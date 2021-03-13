@@ -32,7 +32,7 @@ public class PlayerDashState : PlayerAbilityState
 
         player.DashDirectionIndicator.gameObject.SetActive(true);
 
-        player.DepleteAbility(playerData.dashAbilityValue);
+        player.ConsumeAbility(playerData.dashAbilityValue);
 
     }
 
@@ -117,8 +117,11 @@ public class PlayerDashState : PlayerAbilityState
     public bool CheckIfCanDash()
     {
         bool hasAbilityPoints = player.currentAbility - playerData.dashAbilityValue > 0;
-        
-        return CanDash && hasAbilityPoints && Time.time >= lastDashTime + playerData.dashCooldown;
+
+        // return CanDash && hasAbilityPoints && Time.time >= lastDashTime + playerData.dashCooldown;
+
+        return CanDash && hasAbilityPoints;
+
     }
 
     public void ResetCanDash() => CanDash = true;

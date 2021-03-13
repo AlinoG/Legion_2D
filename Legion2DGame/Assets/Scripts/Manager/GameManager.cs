@@ -145,10 +145,11 @@ public class GameManager : MonoBehaviour
             dashCooldownTime = player.GetComponent<Player>().dashCooldown;
         }
 
+        // TODo: Maybe we don't need this dashCooldDown
         if (dashCooldownTime > 0)
         {
             dashCooldownTime -= Time.deltaTime;
-            PlayerDashCounterHUD.text =  dashCooldownTime.ToString();
+            PlayerDashCounterHUD.text = dashCooldownTime.ToString();
         }
         else
         {
