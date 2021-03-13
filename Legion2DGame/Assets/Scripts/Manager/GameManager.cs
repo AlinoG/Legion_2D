@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Text KillCountHUD;
     public Text PlayerArrowCountHUD;
     public Text PlayerDashCounterHUD;
+    public GameObject PlayerAbilityOrbHUD;
     private float dashCooldownTime;
 
     [Header("Random Level Generator")]
@@ -153,5 +154,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerDashCounterHUD.text = "Current ability: " + player.GetComponent<Player>().currentAbility;
         }
+
+        PlayerAbilityOrbHUD.GetComponent<HUDOrbScript>().currentValue = player.GetComponent<Player>().currentAbility;
     }
 }

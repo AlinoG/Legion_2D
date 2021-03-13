@@ -115,6 +115,8 @@ public class Player : MonoBehaviour
         dashCooldown = playerData.dashCooldown;
 
         facingDirection = 1;
+
+        InvokeRepeating("FillAbilityOverTime", 2.0f, 1f);
     }
 
     private void Update()
@@ -282,6 +284,11 @@ public class Player : MonoBehaviour
             currentHealth = 0;
             Death();
         }
+    }
+
+    private void FillAbilityOverTime()
+    {
+        FillAbility(2);
     }
 
     public void FillAbility(float ammout)
