@@ -253,7 +253,6 @@ public class Player : MonoBehaviour
         facingDirection *= -1;
         transform.Rotate(0.0f, 180.0f, 0.0f);
     }
-    #endregion
 
     public void Heal(float ammount)
     {
@@ -288,7 +287,7 @@ public class Player : MonoBehaviour
 
     private void FillAbilityOverTime()
     {
-        FillAbility(2);
+        FillAbility(1);
     }
 
     public void FillAbility(float ammout)
@@ -301,7 +300,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void DepleteAbility(float ammount)
+    public void ConsumeAbility(float ammount)
     {
         currentAbility -= ammount;
 
@@ -337,6 +336,8 @@ public class Player : MonoBehaviour
         alive = false;
         gameObject.SetActive(false);
     }
+
+    #endregion
 
     public virtual void OnDrawGizmos()
     {

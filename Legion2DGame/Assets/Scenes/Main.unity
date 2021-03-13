@@ -673,7 +673,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.4, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418213638
 MonoBehaviour:
@@ -1401,7 +1401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &560671096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9605,8 +9605,7 @@ MonoBehaviour:
   LivesCountHUD: {fileID: 1853510093}
   KillCountHUD: {fileID: 331706945}
   PlayerArrowCountHUD: {fileID: 1284134853}
-  PlayerDashCounterHUD: {fileID: 560671097}
-  PlayerAbilityOrbHUD: {fileID: 0}
+  PlayerAbilityOrbHUD: {fileID: 2032012490}
   LevelGenerator: {fileID: 2040150343}
 --- !u!4 &979532588
 Transform:
@@ -9705,7 +9704,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1016899163
 MonoBehaviour:
@@ -9720,7 +9719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.9339623, b: 0.67712635, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -44767,7 +44766,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 200, y: -30}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2032012492
 MonoBehaviour:
@@ -44783,7 +44782,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxValue: 100
   currentValue: 100
-  minScale: -20
   background: {fileID: 1016899161}
 --- !u!1 &2040150342
 GameObject:

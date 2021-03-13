@@ -8,8 +8,6 @@ public class PlayerDashState : PlayerAbilityState
     private bool isHolding;
     private bool dashInputStop;
 
-    private float lastDashTime;
-
     private Vector2 dashDirection;
     private Vector2 dashDirectionInput;
     private Vector2 lastAIPos;
@@ -17,6 +15,7 @@ public class PlayerDashState : PlayerAbilityState
     public PlayerDashState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
+
     public override void Enter()
     {
         base.Enter();
@@ -32,8 +31,7 @@ public class PlayerDashState : PlayerAbilityState
 
         player.DashDirectionIndicator.gameObject.SetActive(true);
 
-        player.DepleteAbility(playerData.dashAbilityValue);
-
+        player.ConsumeAbility(playerData.dashAbilityValue);
     }
 
     public override void Exit()
@@ -52,10 +50,8 @@ public class PlayerDashState : PlayerAbilityState
 
         if (!isExitingState)
         {
-
             player.Anim.SetFloat("yVelocity", player.CurrentVelocity.y);
             player.Anim.SetFloat("xVelocity", Mathf.Abs(player.CurrentVelocity.x));
-
 
             if (isHolding)
             {
@@ -117,8 +113,8 @@ public class PlayerDashState : PlayerAbilityState
     public bool CheckIfCanDash()
     {
         bool hasAbilityPoints = player.currentAbility - playerData.dashAbilityValue > 0;
-        
-        return CanDash && hasAbilityPoints && Time.time >= lastDashTime + playerData.dashCooldown;
+
+        return CanDash && hasAbilityPoints;
     }
 
     public void ResetCanDash() => CanDash = true;
