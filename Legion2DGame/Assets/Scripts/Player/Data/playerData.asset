@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   totalHealth: 100
-  totalAbility: 100
+  abilityOrbValue: 100
+  abiltyOrbs: 2
+  activeAbilityOrbs: 2
   movementVelocity: 10
   jumpVelocity: 20
   amountOfJumps: 2

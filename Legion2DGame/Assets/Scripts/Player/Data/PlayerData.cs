@@ -5,7 +5,9 @@ public class PlayerData : ScriptableObject
 {
     [Header("Basic stats")]
     public float totalHealth = 100;
-    public int totalAbility = 100;
+    public int abilityOrbValue = 100;
+    public int abiltyOrbs = 1;
+    public int activeAbilityOrbs = 1;
     [Header("Move State")]
     public float movementVelocity = 10f;
 

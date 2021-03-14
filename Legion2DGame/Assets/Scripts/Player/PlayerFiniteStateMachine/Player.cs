@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     public bool alive { get; private set; }
     public float maxHealth { get; private set; }
     public float currentHealth { get; private set; }
-    public float maxAbility { get; private set; }
     public float currentAbility { get; private set; }
+    public int currentActiveAbilityOrbs { get; private set; }
     public int arrowCount { get; private set; }
     public float dashCooldown { get; private set; }
 
@@ -106,15 +106,14 @@ public class Player : MonoBehaviour
         StateMachine.Initialize(IdleState);
 
         alive = true;
+        facingDirection = 1;
 
         maxHealth = playerData.totalHealth;
         currentHealth = maxHealth;
-        maxAbility = playerData.totalAbility;
-        currentAbility = maxAbility;
+        currentAbility = playerData.abilityOrbValue * playerData.abiltyOrbs;
+        currentActiveAbilityOrbs = playerData.activeAbilityOrbs;
         arrowCount = playerData.arrowCount;
         dashCooldown = playerData.dashCooldown;
-
-        facingDirection = 1;
 
         InvokeRepeating("FillAbilityOverTime", 2.0f, 1f);
     }
@@ -285,28 +284,72 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void FillAbilityOverTime()
     {
-        FillAbility(1);
+        FillAbilityPool(1, false);
     }
 
-    public void FillAbility(float ammout)
+    public void FillAbility(float ammount)
+    {
+        // ToDo:
+        // Made function this way because SendMessage function can only send 1 argument, and we need two.
+        // Need to find better way of doing this.
+        FillAbilityPool(ammount, true);
+    }
+
+    private void FillAbilityPool(float ammout, bool addOrb = true)
     {
         currentAbility += ammout;
 
-        if (currentAbility > maxAbility)
+        if (addOrb && currentAbility > playerData.abilityOrbValue * currentActiveAbilityOrbs)
         {
-            currentAbility = maxAbility;
+            AddAbilityOrb(1);
+        }
+
+        if (currentAbility > playerData.abilityOrbValue * currentActiveAbilityOrbs)
+        {
+            currentAbility = playerData.abilityOrbValue * currentActiveAbilityOrbs;
         }
     }
 
     public void ConsumeAbility(float ammount)
     {
+        ConsumeAbilityPool(ammount, true);
+    }
+
+    private void ConsumeAbilityPool(float ammount, bool removeOrb = true)
+    {
         currentAbility -= ammount;
+
+        if (removeOrb && currentAbility < playerData.abilityOrbValue * (currentActiveAbilityOrbs - 1))
+        {
+            RemoveAbilityOrb(1);
+        }
 
         if (currentAbility < 0)
         {
             currentAbility = 0;
+        }
+    }
+
+    public void AddAbilityOrb(int ammount)
+    {
+        currentActiveAbilityOrbs += ammount;
+
+        if (currentActiveAbilityOrbs > playerData.abiltyOrbs)
+        {
+            currentActiveAbilityOrbs = playerData.abiltyOrbs;
+        }
+    }
+
+    public void RemoveAbilityOrb(int ammount)
+    {
+        currentActiveAbilityOrbs -= ammount;
+
+        if (currentActiveAbilityOrbs < 0)
+        {
+            currentActiveAbilityOrbs = 0;
         }
     }
 
